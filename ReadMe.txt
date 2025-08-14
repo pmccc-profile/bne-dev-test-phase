@@ -1,2 +1,2 @@
 Main Section - make 'learn more' functional
-                - cpp: polish if section
+                - cpp: polish if section and toggle accordingly
