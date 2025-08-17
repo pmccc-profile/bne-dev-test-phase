@@ -19,7 +19,10 @@
     flex-direction: column;
     border: 1px solid grey;
     border-radius: 30px;
-    /*box-shadow: 10px 10px 10px lightgrey;*/
+}
+
+.article-if:hover{
+    border-radius: 30px;
 }
 
 .article-if > h2{
@@ -106,7 +109,7 @@
     text-align: center;
     letter-spacing: 15px;
     border: 1px solid white;
-    background-color: rgb(60,179,113);
+    /*background-color: rgb(60,179,113);*/
     animation: popupLoaderResult 1s;
 }
 
