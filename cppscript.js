@@ -227,10 +227,32 @@ document.querySelectorAll(".article-if").forEach((section, index)=>{
                 if(e.id.includes("90")){
                     loaderBuffer("pass");
                 }else if(e.id.includes("80")){
+                    //condition is false
+                    div_logic_if.style.border = "1px solid red";
+                    //set timeout or delay before continuing animation
+                    setTimeout(() => {
+                        //condition is true
+                        div_logic_if.querySelector("p").textContent = "score>=80";
+                        div_logic_if.style.border = "1px solid blue";
+                    }, 1000);
+                    
                     loaderBuffer("poor");
                 }else{
+                    //condition is false
+                    div_logic_if.style.border = "1px solid red";
+                    //set timeout or delay before continuing animation
+                    setTimeout(() => {
+                        //condition is false
+                        div_logic_if.querySelector("p").textContent = "score>=80";
+                    }, 1000); 
                     loaderBuffer("fail");
                 }
+                //set timeout or delay before continuing animation
+                setTimeout(() => {
+                    //revert to default
+                    div_logic_if.querySelector("p").textContent = "score>=90";
+                    div_logic_if.style.border = "1px solid blue";
+                }, 4000);
             }
         }else{
             loaderBuffer("hide");
