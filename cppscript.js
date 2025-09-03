@@ -2,6 +2,7 @@
 //detect collision function
 //movement function
 //reset function
+//set timeout or delay before continuing (animation)
 
 
 //loop through each article-if
@@ -146,7 +147,6 @@ document.querySelectorAll(".article-if").forEach((section, index)=>{
             //start animation for logic checking
             animationLogicChecking(0,e);
 
-            //set timeout or delay before continuing animation
             setTimeout(() => {
                 //resume animation after logic processing
                 window.requestAnimationFrame(() => animationExecution(e));
@@ -206,30 +206,34 @@ document.querySelectorAll(".article-if").forEach((section, index)=>{
     //animation logic checking process
     function animationLogicChecking(collisionLogicCheck, e) {
         if(!collisionLogicCheck){
-            //if condition
+            //if condition flowchart
             if(index===0){
                 if(!e.id.includes("70")){
                     loaderBuffer("pass");
                 }else{
+                    //condition is false
+                    div_logic_if.style.border = "1px solid red";
                     loaderBuffer("");
                 }
             }
-            //if else condition
+            //if else condition flowchart
             if(index===1){
                 if(e.id.includes("70")){
+                    //condition is false
+                    div_logic_if.style.border = "1px solid red";
                     loaderBuffer("fail");
                 }else{
                     loaderBuffer("pass");
                 }
             }
-            //if elseif else condition
+            //if elseif else condition flowchart
             if(index===2){
                 if(e.id.includes("90")){
                     loaderBuffer("pass");
                 }else if(e.id.includes("80")){
                     //condition is false
                     div_logic_if.style.border = "1px solid red";
-                    //set timeout or delay before continuing animation
+                    //next condition
                     setTimeout(() => {
                         //condition is true
                         div_logic_if.querySelector("p").textContent = "score>=80";
@@ -240,23 +244,25 @@ document.querySelectorAll(".article-if").forEach((section, index)=>{
                 }else{
                     //condition is false
                     div_logic_if.style.border = "1px solid red";
-                    //set timeout or delay before continuing animation
+                    //next condition
                     setTimeout(() => {
                         //condition is false
                         div_logic_if.querySelector("p").textContent = "score>=80";
                     }, 1000); 
                     loaderBuffer("fail");
                 }
-                //set timeout or delay before continuing animation
                 setTimeout(() => {
                     //revert to default
                     div_logic_if.querySelector("p").textContent = "score>=90";
-                    div_logic_if.style.border = "1px solid blue";
-                }, 4000);
-            }
+                }, 4000); 
+            }          
         }else{
             loaderBuffer("hide");
         }
+        setTimeout(() => {
+            //revert to default
+            div_logic_if.style.border = "1px solid blue";
+        }, 4000);
     }
 
     //loader animation
@@ -276,21 +282,18 @@ document.querySelectorAll(".article-if").forEach((section, index)=>{
         }
         
         if(result==="pass"){
-            //set timeout or delay before continuing animation
             setTimeout(() => {
                 loaderResult.querySelector("h2").innerHTML = "PASS";
                 loaderResult.style.backgroundColor = "rgb(60,179,113)";
                 loaderResult.style.display = "block";
             }, 1500); 
         }else if(result==="fail"){
-            //set timeout or delay before continuing animation
             setTimeout(() => {
                 loaderResult.querySelector("h2").innerHTML = "FAIL";
                 loaderResult.style.backgroundColor = "rgb(230,103,113)";
                 loaderResult.style.display = "block";
             }, 1500);            
         }else if(result==="poor"){
-            //set timeout or delay before continuing animation
             setTimeout(() => {
                 loaderResult.querySelector("h2").innerHTML = "POOR";
                 loaderResult.style.backgroundColor = "orange";
