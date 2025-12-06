@@ -298,7 +298,7 @@ document.querySelectorAll(".article-if").forEach((section, index)=>{
                 loaderResult.querySelector("h2").innerHTML = "POOR";
                 loaderResult.style.backgroundColor = "orange";
                 loaderResult.style.display = "block";
-            }, 500);              
+            }, 1500);              
         }
     }
     
@@ -339,3 +339,4 @@ document.querySelectorAll(".article-if").forEach((section, index)=>{
         e.style.top = init_posTop + 'px';
     }
 });
+
