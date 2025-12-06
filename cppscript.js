@@ -51,18 +51,18 @@ document.querySelectorAll(".article-if").forEach((section, index)=>{
     
     //click to reset animation
     btn_end.addEventListener("click", () => {
-
-        //initialize each time;
+        
+        //initialize each time
         collisionLogicCheck = 0;
         collisionEndCheck = 0;
         animationEnd = 0;
         init_posLeft = 0;
         init_posTop = 0;
-        next = 0;
-
-        alert("Reset");
-
-        animationReset(dscore_arr);
+        next = 0;        
+        
+        //alert("Reset");
+        
+        progressbarAnimation();
     });
     
     //animation start
@@ -298,12 +298,42 @@ document.querySelectorAll(".article-if").forEach((section, index)=>{
                 loaderResult.querySelector("h2").innerHTML = "POOR";
                 loaderResult.style.backgroundColor = "orange";
                 loaderResult.style.display = "block";
-            }, 1500);              
+            }, 500);              
         }
+    }
+    
+    //progress bar animation
+    function progressbarAnimation(){
+        const pb = section.querySelector(".progress-bar");
+        const spb = pb.querySelector(".stat-progress-bar");
+        
+        btn_start.disabled = true;
+        pb.style.display = "block";
+        spb.style.display = "block";
+        spb.style.width = "1%";
+        
+        let w = 1; //width
+        
+        function stat(){
+            if(w==100){
+                setTimeout(() => {
+                    pb.style.display = "none";
+                    spb.style.display = "none";
+                    btn_start.disabled = false;
+                }, 500);
+                return;
+            }
+            //increase progress bar stat
+            w++;
+            spb.style.width = w + "%";
+            
+            requestAnimationFrame(stat); //loop animation
+        }      
+        requestAnimationFrame(stat); //trigger animation
     }
 
     //animation reset
-    function animationReset(e){
+    function animationReset(e){      
         //reset to initial position
         e.style.left = init_posLeft + 'px';
         e.style.top = init_posTop + 'px';
