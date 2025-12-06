@@ -1,2 +1,3 @@
 Main Section - make 'learn more' functional
-                - cpp: polish dark mode and media query
+                - cpp: if condition okay for now, switch case on progress
+
